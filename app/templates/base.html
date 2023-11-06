@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %} - Mailer</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+
+<nav>
+    E<b>MAIL</b>nuel
+</nav>
+
+<section class="content">
+    <div class="top-bar">
+        <form method="get">
+            <input name="search" type="text" placeholder="¿Qué miras, bobo?"/>
+        </form>
+        {% block action %}{% endblock %}
+    </div>
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</section>
+
